@@ -397,7 +397,11 @@
   .paywall-header h2 { color: white; font-size: 1.5rem; font-weight: 900; }
   .paywall-header p { color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-top: 5px; }
 
-  .paywall-body { padding: 30px; }
+  .paywall-body { padding: 30px 30px 20px; }
+  .paywall-card { max-height: 90vh; overflow-y: auto; }
+  .paywall-card::-webkit-scrollbar { width: 6px; }
+  .paywall-card::-webkit-scrollbar-track { background: #141420; }
+  .paywall-card::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
   .paywall-plan {
     display: flex;
     justify-content: space-between;
@@ -604,29 +608,33 @@
   .jarvis-btn {
     display: block;
     width: 100%;
-    padding: 12px;
-    margin-top: 16px;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    border: 1px dashed #334155;
+    padding: 14px 20px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #111827, #1e293b);
+    border: 1.5px dashed #475569;
     border-radius: 10px;
-    color: #64748b;
-    font-size: 0.8rem;
-    font-weight: 600;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
     letter-spacing: 0.5px;
+    text-align: center;
   }
   .jarvis-btn:hover {
     background: linear-gradient(135deg, #1e293b, #334155);
-    color: #94a3b8;
-    border-color: #475569;
-    box-shadow: 0 0 20px rgba(100,116,139,0.1);
+    color: #e2e8f0;
+    border-color: #64748b;
+    box-shadow: 0 0 25px rgba(100,116,139,0.2);
+    transform: translateY(-1px);
   }
   .jarvis-btn .jarvis-label {
-    font-size: 0.65rem;
-    color: #475569;
+    font-size: 0.7rem;
+    color: #64748b;
     display: block;
-    margin-top: 3px;
+    margin-top: 5px;
+    font-weight: 400;
+    font-style: italic;
   }
 
   /* Jarvis unlock overlay */
