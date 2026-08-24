@@ -1,6 +1,6 @@
-# 🧠 Brain — Project Notes
+# Brain — Project Notes
 
-## Ultra Premium Elite™ — Satirical Guru Paywall Website
+## Ultra Premium Elite — Satirical Guru Paywall Website
 
 **Repo:** https://github.com/Jnjworks/ultra-premium-elite
 **Live site:** https://jnjworks.github.io/ultra-premium-elite/
@@ -11,18 +11,18 @@ A satirical website that roasts online course sellers / "guru" culture. Users cl
 - https://t.me/bestaitoolsai
 
 ### Key Features
-- **Animated urgency banner** with fake countdown and decreasing "spots left"
-- **Fake stats** (4,847 members, $12.4M+ revenue, 99.7% win rate) that increment in real time
-- **Social proof bar** — "As featured in Forbes, TechCrunch, Joe Rogan Experience"
-- **Hilarious testimonials** — Dave R.'s wife left him but the newsletter is worth it
-- **Three pricing tiers:**
+- Animated urgency banner with fake countdown and decreasing "spots left"
+- Fake stats (4,847 members, $12.4M+ revenue, 99.7% win rate) that increment in real time
+- Social proof bar — "As featured in Forbes, TechCrunch, Joe Rogan Experience"
+- Hilarious testimonials — Dave R.'s wife left him but the newsletter is worth it
+- Three pricing tiers:
   - Normie ($0) — "Stay broke forever"
-  - Ultra Premium Elite™ ($997) — "Most popular"
-  - Sigma Grindset™ ($9,997) — "For serious players only"
-- **Fake Stripe checkout form** with card formatting, expiry slash, CVC
-- **Processing animation** — "PROCESSING PAYMENT..." → "VERIFYING IDENTITY..." → "ACTIVATING MEMBERSHIP..."
-- **"Okay, but I'm Jarvis" button** — A subtle easter egg at the bottom of the paywall that triggers a full-screen hacker terminal animation and instantly unlocks everything
-- **Disclaimer** at the bottom explaining the satire
+  - Ultra Premium Elite ($997) — "Most popular"
+  - Sigma Grindset (9,997) — "For serious players only"
+- Fake Stripe checkout form with card formatting, expiry slash, CVC
+- Processing animation — "PROCESSING PAYMENT..." -> "VERIFYING IDENTITY..." -> "ACTIVATING MEMBERSHIP..."
+- "Okay, but I'm Jarvis" button — A subtle easter egg at the bottom of the paywall that triggers a full-screen hacker terminal animation and instantly unlocks everything
+- Disclaimer at the bottom explaining the satire
 
 ### Design Decisions
 - Single HTML file (no framework, no build step) — instant deploy
@@ -38,9 +38,9 @@ A satirical website that roasts online course sellers / "guru" culture. Users cl
 - User wanted "God Mode" renamed to "Sigma Grindset™" — funnier, more on-brand for the guru satire
 
 ### Potential Future Ideas
-- Fake "notification" popups ("Jake from Texas just upgraded!")
+- Fake notification popups ("Jake from Texas just upgraded!")
 - Fake live visitor counter in the corner
 - Confetti animation on unlock
 - Dark/light mode toggle
 - Fake enterprise tier at $99,999/year
-- Email collection that shows a "Thank you!" animation without collecting anything
+- Email collection that shows a "Thank you" animation without collecting anything
