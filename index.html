@@ -600,6 +600,87 @@
   }
   .stripe-badge svg { width: 14px; height: 14px; fill: #6b7280; }
 
+  /* Jarvis button */
+  .jarvis-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    border: 1px dashed #334155;
+    border-radius: 10px;
+    color: #64748b;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 0.5px;
+  }
+  .jarvis-btn:hover {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: #94a3b8;
+    border-color: #475569;
+    box-shadow: 0 0 20px rgba(100,116,139,0.1);
+  }
+  .jarvis-btn .jarvis-label {
+    font-size: 0.65rem;
+    color: #475569;
+    display: block;
+    margin-top: 3px;
+  }
+
+  /* Jarvis unlock overlay */
+  .jarvis-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #0a0a0a;
+    z-index: 99999;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #34d399;
+    font-family: 'Courier New', monospace;
+  }
+  .jarvis-overlay.active { display: flex; }
+  .jarvis-overlay .terminal-line {
+    font-size: 0.85rem;
+    opacity: 0;
+    animation: typeIn 0.3s forwards;
+    margin-bottom: 6px;
+  }
+  .jarvis-overlay .terminal-line.hero-line {
+    font-size: 1.8rem;
+    font-weight: 900;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #34d399, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .jarvis-overlay .terminal-line.sub {
+    font-size: 1rem;
+    color: #94a3b8;
+    font-family: 'Inter', sans-serif;
+  }
+  @keyframes typeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .jarvis-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.1em;
+    background: #34d399;
+    margin-left: 3px;
+    animation: blink 0.8s step-end infinite;
+    vertical-align: text-bottom;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
   /* Responsive */
   @media (max-width: 600px) {
     .hero h1 { font-size: 2rem; }
@@ -902,8 +983,18 @@
         <span>🛡️ Money-back guarantee</span>
         <span>⭐ 4.9/5 rating</span>
       </div>
+
+      <button class="jarvis-btn" onclick="jarvisUnlock()">
+        Okay, but I'm Jarvis
+        <span class="jarvis-label">"I already know everything anyway"</span>
+      </button>
     </div>
   </div>
+</div>
+
+<!-- Jarvis Overlay -->
+<div class="jarvis-overlay" id="jarvisOverlay">
+  <div id="jarvisTerminal"></div>
 </div>
 
 <script>
@@ -1011,6 +1102,52 @@
   document.getElementById('paywall').addEventListener('click', function(e) {
     if (e.target === this) closePaywall();
   });
+
+  // Jarvis unlock
+  function jarvisUnlock() {
+    const overlay = document.getElementById('jarvisOverlay');
+    const terminal = document.getElementById('jarvisTerminal');
+    overlay.classList.add('active');
+    terminal.innerHTML = '';
+
+    const lines = [
+      { text: '>的身份已验证: JARVIS', delay: 0 },
+      { text: '> Bypassing Ultra Premium paywall...', delay: 400 },
+      { text: '> Injecting admin credentials...', delay: 800 },
+      { text: '> Disabling Stripe integration... done.', delay: 1300 },
+      { text: '> Unlocking all premium tiers... done.', delay: 1800 },
+      { text: '> Granting God Mode access... done.', delay: 2200 },
+      { text: '> Access level: MAXIMUM', delay: 2700 },
+      { text: '', delay: 3100, isBlank: true },
+      { text: 'Welcome back, sir.', delay: 3300, isHero: true },
+      { text: 'All premium content is yours. No charge.', delay: 3700, isSub: true },
+    ];
+
+    lines.forEach((line, i) => {
+      setTimeout(() => {
+        const el = document.createElement('div');
+        el.className = 'terminal-line' + (line.isHero ? ' hero-line' : '') + (line.isSub ? ' sub' : '');
+        if (!line.isBlank) {
+          el.innerHTML = line.text + '<span class="jarvis-cursor"></span>';
+        } else {
+          el.innerHTML = '&nbsp;';
+        }
+        terminal.appendChild(el);
+        // Remove cursor from previous lines
+        const allCursors = terminal.querySelectorAll('.jarvis-cursor');
+        allCursors.forEach((c, j) => { if (j < allCursors.length - 1) c.remove(); });
+      }, line.delay);
+    });
+
+    // After animation, show unlocked content
+    setTimeout(() => {
+      overlay.classList.remove('active');
+      document.getElementById('paywall').classList.remove('active');
+      document.body.style.overflow = '';
+      document.getElementById('mainPage').style.display = 'none';
+      document.getElementById('unlockedPage').classList.add('active');
+    }, 4500);
+  }
 </script>
 
 </body>
